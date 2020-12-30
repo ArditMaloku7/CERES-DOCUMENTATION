@@ -1,0 +1,304 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "Certifications",
+    "contact" : { },
+    "license" : { },
+    "version" : "2a4401b7-a9c4-4cac-ac91-0da3771d5bf7"
+  },
+  "externalDocs" : { },
+  "servers" : [ {
+    "url" : "https://ceres.deskriptika.com/laravel"
+  } ],
+  "security" : [ {
+    "bearerAuth" : [ ]
+  } ],
+  "paths" : {
+    "/api/certification/show" : {
+      "get" : {
+        "summary" : "Show Certifications",
+        "description" : "Returns two arrays of current user cerfications that he applied for, divided based on incompleted and completed certifications.",
+        "operationId" : "ShowCertifications",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : { }
+        }
+      }
+    },
+    "/api/certification/allCertifications" : {
+      "get" : {
+        "summary" : "All Certifications Schemes",
+        "description" : "Returns an array of certification schemes objects with its relevant certification levels data.",
+        "operationId" : "AllCertificationsSchemes",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : { }
+        }
+      }
+    },
+    "/api/certification/certificatesLevels/{id}/{cid}" : {
+      "get" : {
+        "summary" : "Get Certificates Levels",
+        "description" : "Returns filtered certifications with its requirements based on certification level id and certification scheme id.",
+        "operationId" : "GetCertificatesLevels",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "cid",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : { }
+        }
+      }
+    },
+    "/api/certification/billingHistory" : {
+      "get" : {
+        "summary" : "Billing History",
+        "description" : "Endpoint of billing history, lists all payments and informations about them.",
+        "operationId" : "BillingHistory",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : { }
+        }
+      }
+    },
+    "/api/certification/educationLevels" : {
+      "get" : {
+        "summary" : "Get Education Levels",
+        "description" : "Gets all levels of eduction.",
+        "operationId" : "GetEducationLevels",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : { }
+        }
+      }
+    },
+    "/api/certification/add_certification" : {
+      "post" : {
+        "summary" : "Add Certification Step 1",
+        "description" : "First step of applying for certifice.",
+        "operationId" : "AddCertificationStep1",
+        "parameters" : [ ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : { }
+        }
+      }
+    },
+    "/api/certification/certification_exam_info" : {
+      "post" : {
+        "summary" : "Add certification_exam_info Step 2",
+        "description" : "Second step of applying for certifice.",
+        "operationId" : "Addcertification_exam_infoStep2",
+        "parameters" : [ ],
+        "requestBody" : {
+          "content" : {
+            "text/plain" : {
+              "schema" : {
+                "type" : "string",
+                "example" : "{\"formInfo\":16427,\"exam_number\":123,\"exam_issuer\":\"test\",\"other_details\":\"dasdsadsad\",\"date_of_achievement\":\"2020-12-12\"}"
+              },
+              "example" : "{\"formInfo\":16427,\"exam_number\":123,\"exam_issuer\":\"test\",\"other_details\":\"dasdsadsad\",\"date_of_achievement\":\"2020-12-12\"}"
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : { }
+        }
+      }
+    },
+    "/api/certification/certification_education" : {
+      "post" : {
+        "summary" : "Certification Education Step 3",
+        "operationId" : "CertificationEducationStep3",
+        "parameters" : [ ],
+        "requestBody" : {
+          "content" : {
+            "text/plain" : {
+              "schema" : {
+                "type" : "string",
+                "example" : "{\"pecb_education_level_id\":1,\"formInfo\":16427,\"other_certification\":\"12312312cff\",\"date_started\":\"2018-12-12\",\"business_name\":\"dajsdadjs\",\"title\":\"dasdasd\",\"job_title\":\"dadasdasdas\",\"date_to\":\"2018-12-13\",\"city\":\"test\",\"pecb_country_id\":123,\"pecb_state_id\":22,\"experience_hours\":\"2\",\"email\":\"blin@gmail.com\",\"phone\":\"123123\",\"experience_details\":\"dsadasd\",\"job_exp_info_secutiry\":\"yes\",\"immediate_supervisor\":\"dasdsad\",\"supervisor_title\":\"dsadsa\"}"
+              },
+              "example" : "{\"pecb_education_level_id\":1,\"formInfo\":\"16427\",\"other_certification\":\"12312312cff\",\"date_from\":[\"2018-12-12\",\"2018-12-12\"],\"date_started\":[\"2018-12-12\",\"2018-12-12\"],\"business_name\":[\"dajsdadjs\",\"dajsdadjs\"],\"title\":[\"dajsdadjs\",\"dajsdadjs\"],\"job_title\":[\"dajsdadjs\",\"dajsdadjs\"],\"date_to\":[\"2018-12-13\",\"2018-12-13\"],\"city\":[\"dajsdadjs\",\"dajsdadjs\"],\"pecb_country_id\":[123,123],\"pecb_state_id\":[22,22],\"experience_hours\":[\"2\",\"2\"],\"email\":[\"blin@gmail.com\",\"blin@gmail.com\"],\"phone\":[\"123123\",\"123123\"],\"experience_details\": \"dsadasd\",\"job_exp_info_secutiry\": \"yes\",\"immediate_supervisor\":[\"dasdsad\",\"dasdsad\"],\"supervisor_title\":[\"dasdsad\",\"dasdsad\"]}"
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : { }
+        }
+      }
+    },
+    "/api/certification/professional_references" : {
+      "post" : {
+        "summary" : "Step 4",
+        "operationId" : "Step4",
+        "parameters" : [ ],
+        "requestBody" : {
+          "content" : {
+            "text/plain" : {
+              "schema" : {
+                "type" : "string",
+                "example" : "{\"title\":\"Mr\",\"first_name\":\"blin\",\"last_name\":\"bakija\",\"qualification\":\"dsada\",\"business\":\"dsadas\",\"telephone\":12312312,\"email\":\"dasds@gmail.com\",\"formInfo\":\"16446\",\"project_name\":\"dsdad\",\"experience_hours\":2}"
+              },
+              "example" : "{\"title\":\"Mr\",\"first_name\":\"blin\",\"last_name\":\"bakija\",\"qualification\":\"dsada\",\"business\":\"dsadas\",\"telephone\":12312312,\"email\":\"dasds@gmail.com\",\"formInfo\":\"16446\",\"project_name\":\"dsdad\",\"experience_hours\":2}"
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : { }
+        }
+      }
+    },
+    "/api/cpdinfo/show" : {
+      "post" : {
+        "summary" : "CDP Info",
+        "operationId" : "CDPInfo",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body_1"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : { }
+        }
+      }
+    },
+    "/api/cpdinfo/store" : {
+      "post" : {
+        "summary" : "SUBMIT CPD",
+        "operationId" : "SUBMITCPD",
+        "requestBody" : {
+          "content" : {
+            "text/plain" : {
+              "schema" : {
+                "type" : "string",
+                "example" : "{\"from[]\":\"2020-12-16T22:53:00.000+0000\",\"until[]\":\"2020-12-26T22:53:00.000+0000\",\"activity[]\":123,\"company[]\":\"bbros\",\"num_hours[]\":12,\"certification_id[]\":17,\"pecb_user_certification_id[]\":17}"
+              },
+              "example" : "{\"from[]\":\"2020-12-16 22:53:00\",\"until[]\":\"2020-12-26 22:53:00\",\"activity[]\":123,\"company[]\":\"bbros\",\"num_hours[]\":12,\"certification_id[]\":17,\"pecb_user_certification_id[]\":17}"
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : { }
+        }
+      }
+    },
+    "/api/declaration/show" : {
+      "get" : {
+        "summary" : "DECLARATION - SHOW",
+        "description" : "This endpoint lists all types of declaration/agreements with its status.",
+        "operationId" : "DECLARATION-SHOW",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : { }
+        }
+      }
+    },
+    "/api/certification/getAllinfo/{id}" : {
+      "get" : {
+        "summary" : "Step 6",
+        "description" : "This endpoint return all information about the certeficate application.",
+        "operationId" : "Step6",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : { }
+        }
+      }
+    },
+    "/api/amf/create" : {
+      "post" : {
+        "summary" : "SUBMIT AMF",
+        "operationId" : "SUBMITAMF",
+        "responses" : {
+          "200" : { }
+        }
+      }
+    },
+    "/api/amf/show" : {
+      "post" : {
+        "summary" : "VIEW SUBMIT AMF",
+        "operationId" : "VIEWSUBMITAMF",
+        "responses" : {
+          "200" : { }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "body_1" : {
+        "type" : "object",
+        "properties" : {
+          "page" : {
+            "type" : "integer"
+          }
+        },
+        "example" : {
+          "page" : 1
+        }
+      },
+      "body" : {
+        "type" : "object",
+        "properties" : {
+          "firstname" : {
+            "type" : "integer"
+          },
+          "lastname" : {
+            "type" : "integer"
+          }
+        },
+        "example" : {
+          "scheme_id" : 2,
+          "certificate_id" : 5
+        }
+      }
+    },
+    "securitySchemes" : {
+      "bearerAuth" : {
+        "type" : "http",
+        "scheme" : "bearer"
+      }
+    }
+  }
+}
